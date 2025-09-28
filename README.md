@@ -34,10 +34,6 @@ Single-file app (`app.py`) that:
 
 \## Setup \& Run (local)
 
-
-
-```bash
-
 \# from the repo folder
 
 python -m venv .venv
@@ -55,6 +51,11 @@ source .venv/bin/activate
 pip install fastapi uvicorn
 
 python app.py
+
+
+```bash
+
+
 
 
 
