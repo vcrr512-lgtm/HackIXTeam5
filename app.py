@@ -25,7 +25,7 @@ async def root():
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Camera Smoke Test</title>
+  <title>Motion Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.0/dist/pose-detection.min.js"></script>
   <style>
@@ -40,17 +40,19 @@ async def root():
   </style>
 </head>
 <body>
-  <h1>Camera Smoke Test</h1>
-  <div id="status" style="color: green;">Ready</div>
-  <button id="startBtn" onclick="window.__start()">Start Camera</button>
-  <pre id="readout" style="margin-top:10px;font:14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;color:#222;background:transparent;border:none;padding:0;">
+  <h1 style="text-align: center;">Motion Tracker</h1>
+  <div id="status" style="color: green; text-align: center;">Ready</div>
+  <div style="text-align: center;">
+    <button id="startBtn" onclick="window.__start()">Start Camera</button>
+  </div>
+  <pre id="readout" style="margin:10px auto 0;font:14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;color:#222;background:transparent;border:none;padding:0;text-align:center;width:fit-content;">
 L: --° | R: --°
 Hips (normalized): L(0.000, 0.000) R(0.000, 0.000) C(0.000, 0.000) [--]
 Knee (abs, 0–1 screen): L(0.000, 0.000)   R(0.000, 0.000)
 Foot (abs, 0–1 screen): L(0.000, 0.000)   R(0.000, 0.000)
   </pre>
 
-  <div id="stack" style="position:relative;width:640px;height:480px;">
+  <div id="stack" style="position:relative;width:640px;height:480px;margin:0 auto;">
     <video id="video" width="640" height="480" autoplay muted playsinline style="display:block;position:absolute;left:0;top:0;z-index:1;"></video>
     <canvas id="overlay" width="640" height="480" style="position:absolute;left:0;top:0;pointer-events:none;z-index:2;"></canvas>
   </div>
